@@ -5,12 +5,12 @@ const UserSchema = new Schema(
     userName: {
       type: String,
       unique: true,
-      require: 'You must enter a username!',
+      require: 'Please enter a username!',
       trim: true,
     },
     email: {
       type: String,
-      require: 'Must enter an email address.',
+      require: 'Please enter a email address.',
       unique: true,
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
