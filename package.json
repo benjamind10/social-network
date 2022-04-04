@@ -1,0 +1,28 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "This a MongoDB API built with social networking as the main topic to display CRUD operations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamind10/social-network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjamind10/social-network/issues"
+  },
+  "homepage": "https://github.com/benjamind10/social-network#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9"
+  }
+}
