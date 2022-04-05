@@ -76,6 +76,63 @@ const userController = {
       })
       .catch(err => res.status(400).json(err));
   },
+
+  // Deletes a user from the DB
+  deleteUser({ params }, res) {
+    User.findOneAndDelete({ _id: params.id })
+      .then(dbUserData => {
+        return Thought.deleteMany({ userId: params.id });
+      })
+      .then(dbUserData => {
+        !dbUserData
+          ? res
+              .status(404)
+              .json({ message: 'No user found with that id.' })
+          : res.json(dbUserData);
+      })
+      .catch(err => res.status(400).json(err));
+  },
+
+  // Adds friend to the array of friends
+  addFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $push: { friends: params.friendId } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    )
+      .then(dbUserData => {
+        !dbUserData
+          ? res
+              .status(404)
+              .json({ message: 'No user found with that id.' })
+          : res.json(dbUserData);
+      })
+      .catch(err => res.json(err));
+  },
+
+  // Removes a friend from the array
+  removeFriend({ params }, res) {
+    console.log(params);
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $pull: { friends: params.friendId } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    )
+      .then(dbUserData => {
+        !dbUserData
+          ? res
+              .status(404)
+              .json({ message: 'No user found with that id.' })
+          : res.json(dbUserData);
+      })
+      .catch(err => res.json(err));
+  },
 };
 
 module.exports = userController;
