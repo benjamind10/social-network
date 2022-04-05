@@ -95,7 +95,7 @@ const thoughtController = {
         !dbReactionData
           ? res
               .status(404)
-              .json({ message: 'No thought found with that id.' })
+              .json({ message: 'No reaction found with that id.' })
           : res.json(dbReactionData);
       })
       .catch(err => res.json(err));
