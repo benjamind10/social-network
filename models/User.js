@@ -1,5 +1,7 @@
+// Imports & Dependencies
 const { Schema, model } = require('mongoose');
 
+// Construct the user schema
 const userSchema = new Schema(
   {
     username: {

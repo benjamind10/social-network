@@ -1,6 +1,8 @@
+// Imports & Dependencies
 const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
+// Constructs the Reaction Schema
 const ReactionSchema = new Schema(
   {
     reactionId: {
@@ -30,6 +32,7 @@ const ReactionSchema = new Schema(
   }
 );
 
+// Constructs the Thought schema
 const ThoughtSchema = new Schema(
   {
     thoughtText: {
@@ -61,10 +64,13 @@ const ThoughtSchema = new Schema(
   }
 );
 
+// get total thoughts
 ThoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
+// create the user model using userSchema
 const Thought = model('Thought', ThoughtSchema);
 
+// export the model
 module.exports = Thought;

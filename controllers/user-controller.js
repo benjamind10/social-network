@@ -1,5 +1,7 @@
+// Imports & Dependencies
 const { User, Thought } = require('../models');
 
+// Constructs the user controller
 const userController = {
   // Display all users
   getAllUsers(req, res) {

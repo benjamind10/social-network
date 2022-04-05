@@ -1,3 +1,4 @@
+// Imports & Dependencies
 const router = require('express').Router();
 const {
   getAllThoughts,
@@ -9,14 +10,17 @@ const {
   deleteReaction,
 } = require('../../controllers/thought-controller');
 
+// Get and Post routes for thoughts
 router.route('/').get(getAllThoughts).post(createThought);
 
+// Single thought routes
 router
   .route('/:id')
   .get(getThoughtById)
   .put(updateThought)
   .delete(deleteThought);
 
+// Thought and reaction routes
 router
   .route('/:thoughtId/reactions')
   .post(addReaction)
